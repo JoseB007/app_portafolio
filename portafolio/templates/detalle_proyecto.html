@@ -1,0 +1,96 @@
+{% extends 'layouts/b.html' %}
+
+{% block content %}
+
+<div class="container py-5">
+    <!-- Título e Imagen destacada -->
+    <div class="row section align-items-center">
+        <div class="col-md-6">
+            <h1 class="mb-4">{{ proyecto.titulo }}</h1>
+        </div>
+        <div class="col-md-6">
+            <img src="{{ proyecto.imagen_miniatura.url }}" class="hero-img" alt="Captura del proyecto">
+        </div>
+    </div>
+
+    <!-- Resumen y Tecnologías -->
+    <div class="row section">
+        <div class="col-md-8">
+            <h3 class="section-title"><i class="bi bi-info-circle me-2"></i>Resumen</h3>
+            <p>{{ proyecto.resumen }}</p>
+        </div>
+        <div class="col-md-4">
+            <h3 class="section-title"><i class="bi bi-tools me-2"></i>Tecnologías</h3>
+            <ul>
+                {{ proyecto.tecnologias_formateadas|safe }}
+            </ul>
+        </div>
+    </div>
+
+    <!-- Características y Arquitectura -->
+    <div class="row section">
+        <div class="col-md-6">
+            <h3 class="section-title"><i class="bi bi-stars me-2"></i>Características</h3>
+            <ul>
+                {% for caracteristica in proyecto.caracteristicas.splitlines %}
+                    {% if caracteristica %}
+                        <li>{{ caracteristica }}</li>
+                    {% endif %}
+                {% empty %}
+                    <li class="text-muted">No especificado</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="col-md-6">
+            <h3 class="section-title"><i class="bi bi-diagram-3 me-2"></i>Arquitectura</h3>
+            <p>{{ proyecto.arquitectura|default:"No especificado" }}</p>
+        </div>
+    </div>
+
+    <!-- GitHub y Demo -->
+    <div class="row section">
+        <div class="col-md-6">
+            <h3 class="section-title"><i class="bi bi-github me-2"></i>Código</h3>
+            {% if proyecto.github_url %}
+            <a href="{{ proyecto.github_url }}" class="btn btn-dark" target="_blank">
+                <i class="bi bi-code-slash me-1"></i> Ver en GitHub
+            </a>
+            {% else %}
+            <p class="text-muted">
+                <div class="d-flex">
+                    <i class="bi bi-lock me-2"></i>
+                    <p>Código fuente no disponible públicamente. Proyecto en desarrollo comercial. Disponible para revisión bajo solicitud.</p>
+                </div>
+            </p>
+            {% endif %}
+        </div>
+        <div class="col-md-6">
+            <h3 class="section-title"><i class="bi bi-globe2 me-2"></i>Demo</h3>
+            <a href="{{ proyecto.demo_url }}" class="btn btn-outline-primary" target="_blank">
+                <i class="bi bi-box-arrow-up-right me-1"></i> Ver proyecto
+            </a>
+        </div>
+    </div>
+
+    <!-- Retos y Próximos pasos -->
+    <div class="row section">
+        <div class="col-md-6">
+            <h3 class="section-title"><i class="bi bi-lightbulb me-2"></i>Retos</h3>
+            <p>{{ proyecto.retos|default:"No especificado" }}</p>
+        </div>
+        <div class="col-md-6">
+            <h3 class="section-title"><i class="bi bi-arrow-up-right-circle me-2"></i>Próximos pasos</h3>
+            <ul>
+                {% for paso in proyecto.proximos_pasos.splitlines %}
+                    {% if paso %}
+                        <li>{{ paso }}</li>
+                    {% endif %}
+                {% empty %}
+                    <li class="text-muted">No especificado</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

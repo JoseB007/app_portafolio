@@ -1,0 +1,83 @@
+{% extends 'layouts/a.html' %}
+{% load static %}
+
+{% block content %}
+    <!-- Sobre mí -->
+    <section id="about" class="pb-5">
+        <div class="container">
+            <div class="hero pt-5">
+                <h1><i class="bi bi-terminal me-2"></i>Desarrollador Backend en Django</h1>
+                <p>Construyo soluciones web escalables, seguras y listas para producción</p>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h2><i class="bi bi-person-lines-fill me-2"></i>Sobre mí</h2>
+                    <p>Soy un desarrollador backend con experiencia en Python y Django. Me enfoco en construir aplicaciones empresariales robustas, usando tecnologías modernas y despliegue en VPS propios. Actualmente estoy lanzando mi propio producto SaaS con Django Tenants bajo el dominio <strong>zonasurdigital.com</strong>.
+                    </p>
+                </div>
+                <div class="col-md-6 text-center">
+                    <img src="{% static 'img/profile.svg' %}" class="img-fluid rounded-circle" alt="Mi foto" style="width: 70%;">
+                </div>
+            </div>
+            <div>
+                <h2 class="text-center mb-4"><i class="bi bi-rocket-takeoff me-2"></i>Mi visión</h2>
+                <p class="lead text-center">Mi objetivo es construir una empresa de software sólida, ofreciendo soluciones web desde el sur de Latinoamérica para el mundo.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stack Tecnológico -->
+    <section id="stack" class="py-5 bg-white">
+        <div class="container">
+            <h2 class="text-center mb-4"><i class="bi bi-tools me-2"></i>Mi stack</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Backend</h5>
+                    <ul>
+                        <li>Python</li>
+                        <li>Django</li>
+                        <li>Django Rest Framework</li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>DevOps</h5>
+                    <ul>
+                        <li>VPS Ubuntu</li>
+                        <li>Nginx, Gunicorn</li>
+                        <li>PostgreSQL</li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Herramientas</h5>
+                    <ul>
+                        <li>Git</li>
+                        <li>Docker</li>
+                        <li>JavaScript</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proyectos -->
+    <section id="projects" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4"><i class="bi bi-folder2-open me-2"></i>Proyectos en producción</h2>
+            <div class="row">
+                {% for proyecto in proyectos %}
+                <div class="col-md-4 mb-4">
+                    <div class="card project-card">
+                        <img src="{{ proyecto.imagen_miniatura.url }}" class="card-img-top" alt="Proyecto 1">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ proyecto.titulo }}</h5>
+                            <p class="card-text">{{ proyecto.descripcion }}</p>
+                            <a href="{{ proyecto.get_absolute_url }}" class="btn btn-outline-primary btn-sm"><i class="bi bi-box-arrow-up-right"></i> Ver detalles</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}
