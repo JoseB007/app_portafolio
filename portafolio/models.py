@@ -53,6 +53,11 @@ class Proyecto(models.Model):
             resultado.append(html)
         return '\n'.join(resultado)
     
+    def get_imagen(self):
+        if self.imagen_miniatura:
+            return self.imagen_miniatura.url
+        return '/static/img/miniatura.svg'
+    
     def save(self, *args, **kwargs):
         # Genera el slug automáticamente si no se proporciona uno
         if not self.slug:

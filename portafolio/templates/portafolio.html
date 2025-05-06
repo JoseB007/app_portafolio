@@ -68,7 +68,7 @@
                 {% for proyecto in proyectos %}
                 <div class="col-md-4 mb-4">
                     <div class="card project-card">
-                        <img src="{{ proyecto.imagen_miniatura.url }}" class="card-img-top" alt="Proyecto 1">
+                        <img src="{{ proyecto.get_imagen }}" class="card-img-top" alt="Proyecto 1">
                         <div class="card-body">
                             <h5 class="card-title">{{ proyecto.titulo }}</h5>
                             <p class="card-text">{{ proyecto.descripcion }}</p>
