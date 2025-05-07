@@ -23,3 +23,10 @@ class DetalleProyectoView(generic.DetailView):
     model = Proyecto
     template_name = "detalle_proyecto.html"
     context_object_name = 'proyecto'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        usuario = User.objects.first()
+        context['user'] = usuario
+        return context
