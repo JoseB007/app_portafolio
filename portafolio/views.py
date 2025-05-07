@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.views import generic
+from django.contrib.auth.models import User
 
 from .models import Proyecto
 
@@ -12,6 +13,9 @@ class PortafolioView(generic.TemplateView):
 
         proyectos = Proyecto.objects.all()
         context['proyectos'] = proyectos
+
+        usuario = User.objects.first()
+        context['user'] = usuario
         return context
     
 

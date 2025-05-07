@@ -4,9 +4,9 @@
 
             <!-- Info general -->
             <div class="col-md-6 mb-3 mb-md-0">
-                <p class="mb-1 fw-semibold">&copy; {% now "Y" %} {{ request.user.persona.nombre_completo }}. Todos los derechos reservados.
+                <p class="mb-1 fw-semibold">&copy; {% now "Y" %} {{ user.persona.nombre_completo }}. Todos los derechos reservados.
                 </p>
-                <p class="mb-0 text-muted small">{{ request.user.persona.ocupacion }}</p>
+                <p class="mb-0 text-muted small">{{ user.persona.ocupacion }}</p>
                 <a class="mb-0 text-muted small text-decoration-none" href="https://zonasurdigital.com/">www.zonasurdigital.com</a>
             </div>
 
@@ -15,15 +15,15 @@
                 <div
                     class="d-flex flex-column flex-md-row justify-content-md-end align-items-start align-items-md-center gap-2">
                     <span class="text-decoration-none text-dark">
-                        <i class="bi bi-envelope me-1"></i> {{ request.user.persona.correo_electronico }}
+                        <i class="bi bi-envelope me-1"></i> {{ user.persona.correo_electronico }}
                     </span>
                     <span class="text-muted d-none d-md-inline">|</span>
-                    <span class="text-dark"><i class="bi bi-phone me-1"></i> +57 {{ request.user.persona.numero_telefono }}</span>
+                    <span class="text-dark"><i class="bi bi-phone me-1"></i> +57 {{ user.persona.numero_telefono }}</span>
                     <span class="text-muted d-none d-md-inline">|</span>
-                    <a href="{{ request.user.persona.linkedin }}" class="text-decoration-none text-primary">
+                    <a href="{{ user.persona.linkedin }}" class="text-decoration-none text-primary">
                         <i class="bi bi-linkedin fs-5"></i>
                     </a>
-                    <a href="{{ request.user.persona.github }}" class="text-decoration-none text-dark">
+                    <a href="{{ user.persona.github }}" class="text-decoration-none text-dark">
                         <i class="bi bi-github fs-5"></i>
                     </a>
                 </div>
